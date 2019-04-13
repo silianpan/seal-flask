@@ -1,3 +1,7 @@
 #!/usr/bin/env python
-# -*-coding:utf-8-*-
-__author__ = "Allen Woo"
+# -*- coding: utf-8 -*-
+# @Time    : 2019-04-13 17:23
+# @Author  : liupan
+# @Site    : 
+# @File    : __init__.py.py
+# @Software: PyCharm
