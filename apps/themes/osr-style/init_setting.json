@@ -1,0 +1,141 @@
+[{
+		"name": "about_us",
+		"category": "文本信息",
+		"type": "text",
+		"text": "这里展示关于我们信息",
+		"title": "关于我们"
+	},
+	{
+		"name": "contact",
+		"category": "文本信息",
+		"type": "text",
+		"text": "Email:xxx@xxx.com",
+		"title": "联系"
+	},
+	{
+		"name": "top-nav",
+		"category": "顶部导航",
+		"type": "text",
+		"link":"/osr-admin/setting/config-edit?project=theme_global_conf",
+		"title": "去以下地址的页面设置"
+	},
+	{
+		"name": "contact_us",
+		"category": "文本信息",
+		"type": "text",
+		"text": "这里展示联系我们信息",
+		"title": "联系我们"
+	},
+	{
+		"name": "user_agreement",
+		"category": "文本信息",
+		"type": "text",
+		"text": "这里展示用户协议",
+		"title": "用户协议"
+	},
+	{
+		"name": "privacy_policy",
+		"category": "文本信息",
+		"type": "text",
+		"text": "这里展示隐私政策",
+		"title": "隐私政策"
+	},
+	{
+		"name": "photo-nav-1",
+		"category": "Photo页面导航",
+		"type": "text",
+		"link": "/photo?category=风景",
+		"title": "风景",
+		"text": "说明:标题是[多媒体>图库]中的任一[分类名称]"
+	},
+	{
+		"name": "photo-nav-2",
+		"category": "Photo页面导航",
+		"type": "text",
+		"link": "/photo?category=城市",
+		"title": "城市",
+		"text": "说明:标题是[多媒体>图库]中的任一[分类名称]"
+	},
+	{
+		"name": "home-rec3",
+		"category": "首页中部侧栏",
+		"type": "text",
+		"title": "Fork me on GitHub",
+		"url": "https://github.com/osroom/osroom"
+	},
+	{
+		"category": "首页顶部轮播",
+		"type": "image",
+		"name": "home-carousel-1",
+		"title": "home-carousel-1",
+		"text": "展示1"
+	},
+	{
+		"category": "首页顶部轮播",
+		"type": "image",
+		"name": "home-carousel-2",
+		"title": "home-carousel-2",
+		"text": "展示2"
+	},
+	{
+		"category": "首页顶部轮播",
+		"type": "image",
+		"name": "home-carousel-3",
+		"title": "home-carousel-3",
+		"text": "展示3"
+	},
+	{
+		"category": "赞助码",
+		"type": "image",
+		"name": "pay-1",
+		"title": "pay-1"
+	},
+	{
+		"category": "赞助码",
+		"type": "image",
+		"name": "pay-2",
+		"title": "pay-2"
+	},
+	{
+		"category": "赞助商",
+		"type": "image",
+		"name": "sponsors-1",
+		"title": "sponsors-1"
+	},
+	{
+		"category": "首页顶部侧栏",
+		"type": "image",
+		"name": "home-rec1-1",
+		"title": "home-rec1-1"
+	},
+	{
+		"category": "首页顶部侧栏",
+		"type": "image",
+		"name": "home-rec1-2",
+		"title": "home-rec1-2"
+	},
+	{
+		"category": "首页中部侧栏",
+		"type": "image",
+		"name": "home-rec4-1",
+		"title": "home-rec4-1"
+	},
+	{
+		"category": "首页中部侧栏",
+		"type": "image",
+		"name": "home-rec4-2",
+		"title": "home-rec4-2"
+	},
+	{
+		"category": "首页中部左主栏",
+		"type": "image",
+		"name": "home-rec2-1",
+		"title": "home-rec2-1"
+	},
+	{
+		"category": "文章页广告",
+		"type": "image",
+		"name": "post-rec1-1",
+		"title": "post-rec1-1"
+	}
+]

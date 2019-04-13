@@ -1,0 +1,125 @@
+{% extends "osr-style/pages/based/based.html" %}
+{% block title %}{{_("支持与赞助我们")}}-{% endblock %}
+{% block content %}
+<div id="app" v-cloak>
+   <div class="row osr-page">
+        <div style="padding-bottom:30px;">
+            <h2 class="text-center">{{_("支持我们")}}</h2>
+             <span>
+                {{_("OSROOM是遵循BSD2协议的开源系统, 免费使用")}}, {{_('你可以从
+                <a href="https://github.com/osroom/osroom" target="_blank">
+                    <i class="fa fa-github"></i> GitHub
+                </a>下载源代码')}}.
+                 {{_("如果对你有帮助, 你又有点小钱，那么你可以通过以下方式支持我们, 将用于支付服务器等必要费用！")}}.
+            </span>
+        </div>
+
+       <div v-if="personal_support" id="one-time" style="padding-bottom:30px;">
+           <h3>{{_("偶尔赞助")}}</h3>
+            <hr/>
+            <span>{{_("你可以通过以下方式偶尔赞助我们")}}</span>
+             <div class="docs-pictures clearfix">
+                <div v-for="pay in personal_support" class="text-center osr-img-list col-sm-4 col-xs-12">
+                     <img width=120px" height="120px" :src="pay.url" alt="二维码" >
+                     <div class="osr-text">{[pay.title]}</div>
+                </div>
+            </div>
+       </div>
+       <div id="periodic" style="padding-bottom:30px;">
+           <h3>{{_("周期赞助")}}</h3>
+            <hr>
+            <div>
+                {{_("如果你选择周期赞助我们, 赞助后可以通过邮件联系我们在该站添加你的链接(需提供赞助途径与单号)")}}
+                <a href="#contact">{{_("联系方式")}}</a><br>
+            </div>
+
+           <div class="text-center text-success">
+               {{_("赞助方式同上")}}
+           </div>
+       </div>
+
+
+       <div v-if="contact" id="contact">
+            <h3>{{_("联系方式")}}</h3>
+            <hr>
+            <div v-html="contact.text_html"></div>
+        </div>
+        <div class="osr-page text-center" style="padding: 30px 0px 30px 0px;">
+            <h4 class="text-success">{{_('赞助者')}}</h4>
+            <div v-if="sponsors">
+                <div class="docs-pictures clearfix">
+                    <div  v-for="sp in sponsors" class="osr-img-list col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                         <div class="author author-list text-center text-success">
+                             <a class="avatar" target="_blank" :href="sp.link">
+                                <img v-bind:src="sp.url+'?w=120&h=120'" alt="{{_('头像')}}">
+                            </a>
+                             <br>
+                            <a class="osr-text" target="_blank" :href="sp.link">
+                                {[sp.title]}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span v-else class="osr-text">{{_('「暂无」省吃俭用吃着泡面租服务器')}}</span>
+        </div>
+    </div>
+
+</div>
+<script>
+
+    var vue = new Vue({
+      el: '#app',
+      delimiters:['{[', ']}'],
+      data:{
+            personal_support:null,
+            sponsors:null,
+            contact:null,
+            support:null
+
+      },
+      filters: {
+            formatDate: function (time) {
+              return irrformatDate(time, "yyyy-MM-dd hh:mm");
+            }
+      }
+    })
+
+    // 加载完页面执行
+    $(document).ready(function(){
+        get_global();
+    })
+
+    function get_global(){
+        var conditions = [{
+                type:"image",
+                name_regex:"pay-[0-9]+",
+                result_key:"personal_support"
+             },
+
+             {
+                type:"text",
+                names:["contact"],
+                result_key:"contact"
+             },
+             {
+                type:"image",
+                name_regex:"sponsors-[0-9]+",
+                result_key:"sponsors"
+             },
+
+            ];
+        var d ={
+            conditions:JSON.stringify(conditions)
+
+        }
+         var result = osrHttp("GET","/api/global/theme-data/display", d, args={not_prompt:true});
+        result.then(function (r) {
+            vue.personal_support = r.data.medias.personal_support;
+            vue.contact = r.data.medias.contact?r.data.medias.contact[0]:[];
+            vue.sponsors = r.data.medias.sponsors;
+        });
+    }
+
+</script>
+{% endblock %}

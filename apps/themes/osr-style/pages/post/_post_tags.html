@@ -1,0 +1,14 @@
+
+<br>
+<hr>
+<label v-if="tags" class="text-success">{{_("标签")}}</label>
+<br>
+<div>
+    <a v-for="(tag, index) in tags" :href="'/corpus/tag?tag='+tag.tag" style="color:#ffffff">
+        <button  :style="'background-color:'+tag.color"
+        class="btn osr-btn btn-xs">
+            {[tag["tag"]]}
+        </button>&nbsp;
+    </a>
+
+</div>

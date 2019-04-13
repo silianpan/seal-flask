@@ -1,0 +1,125 @@
+{
+    "mdb_sys": {
+        "sessions": {},
+        "sys_call_record": {},
+        "sys_url": {},
+        "sys_freq_record": {},
+        "audit_rules": {
+            "time": "<class 'float'>",
+            "rule": "<class 'str'>",
+            "project": "<class 'str'>"
+        },
+        "theme_display_setting": {
+            "name": "<class 'str'>",
+            "category": "<class 'str'>",
+            "type": "<class 'str'>",
+            "text": "<class 'str'>",
+            "title": "<class 'str'>",
+            "text_html": "<class 'str'>",
+            "link": "<class 'str'>",
+            "link_open_new_tab": "<class 'int'>",
+            "link_name": "<class 'str'>",
+            "text_imgs": "<class 'list'>",
+            "time": "<class 'float'>",
+            "user_id": "<class 'int'>",
+            "url": "<class 'str'>",
+            "category_id": "<class 'str'>"
+        },
+        "sys_host": {
+            "host_info": "<class 'dict'>",
+            "type": "<class 'str'>",
+            "conf_version": "<class 'str'>",
+            "disable_update_conf": "<class 'int'>",
+            "start_log": "<class 'str'>",
+            "switch_conf_version": "<class 'NoneType'>"
+        },
+        "plugin_config": {},
+        "theme": {},
+        "sys_msg_img": {},
+        "flask-session": {},
+        "plugin": {},
+        "osr_sys": {},
+        "sys_message": {},
+        "sys_urls": {
+            "url": "<class 'str'>",
+            "endpoint": "<class 'str'>",
+            "type": "<class 'str'>",
+            "methods": "<class 'list'>",
+            "create": "<class 'str'>",
+            "custom_permission": "<class 'dict'>",
+            "login_auth": "<class 'dict'>"
+        },
+        "sys_token": {},
+        "sys_config": {
+            "new_version": "<class 'str'>",
+            "used_versions": "<class 'list'>",
+            "update_time": "<class 'float'>"
+        },
+        "osr_cache": {},
+        "osr_session": {
+            "id": "<class 'str'>",
+            "val": "<class 'bytes'>",
+            "expiration": "<class 'datetime.datetime'>"
+        }
+    },
+    "mdb_user": {
+        "user_like": {},
+        "user_follow": {},
+        "user": {
+            "username": "<class 'str'>",
+            "custom_domain": "<class 'int'>",
+            "password": "<class 'str'>",
+            "email": "<class 'str'>",
+            "gender": "<class 'str'>",
+            "avatar_url": "<class 'dict'>",
+            "address": "<class 'dict'>",
+            "mphone_num": "<class 'NoneType'>",
+            "introduction": "<class 'NoneType'>",
+            "birthday": "<class 'NoneType'>",
+            "pay": "<class 'dict'>",
+            "editor": "<class 'str'>",
+            "homepage": "<class 'NoneType'>",
+            "active": "<class 'bool'>",
+            "is_delete": "<class 'bool'>",
+            "role_id": "<class 'str'>",
+            "create_at": "<class 'float'>",
+            "update_at": "<class 'float'>"
+        },
+        "osr_user": {},
+        "user_op_log": {},
+        "role": {
+            "name": "<class 'str'>",
+            "default": "<class 'int'>",
+            "permissions": "<class 'int'>",
+            "instructions": "<class 'str'>"
+        },
+        "message": {},
+        "user_login_log": {
+            "user_id": "<class 'str'>",
+            "login_info": "<class 'list'>",
+            "pass_error": "<class 'int'>"
+        },
+        "permission": {
+            "value": "<class 'bson.int64.Int64'>",
+            "name": "<class 'str'>",
+            "is_default": "<class 'int'>",
+            "explain": "<class 'str'>"
+        }
+    },
+    "mdb_web": {
+        "post": {},
+        "display_setting": {},
+        "tempfile": {},
+        "comment": {},
+        "verify_code": {},
+        "category": {
+            "name": "<class 'str'>",
+            "type": "<class 'str'>",
+            "user_id": "<class 'int'>"
+        },
+        "msg_code": {},
+        "media": {},
+        "osr_web": {},
+        "access_record": {}
+    }
+}
