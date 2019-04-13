@@ -8,9 +8,13 @@
 
 
 from apps.core.blueprint import api
+from flask import jsonify
 
 
 # 获取所有用户
 @api.route('/user/all', methods=['GET'])
 def list_user():
-    return "liupan"
+    return jsonify({
+        "status": 200,
+        "data": "liupan"
+    })
