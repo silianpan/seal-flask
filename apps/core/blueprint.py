@@ -15,7 +15,7 @@ api = Blueprint('api', __name__, url_prefix=API_URL_PREFIX)
 
 routing_modules = [
     {
-        "from": "apps.modules.user.apis",
+        "from": "apps.modules.user.api",
         "import": ["user"]
     }
 ]

@@ -6,11 +6,10 @@
 # @File    : start.py
 # @Software: PyCharm
 
-from flask import Flask
 from flask_script import Manager
 from apps.init_core_module import init_core_module
+from apps.app import app
 
-app = Flask(__name__)
 # 初始化核心模块
 init_core_module(app)
 manager = Manager(app)

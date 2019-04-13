@@ -6,15 +6,10 @@
 # @File    : user.py
 # @Software: PyCharm
 
-
 from apps.core.blueprint import api
-from flask import jsonify
-
+from apps.modules.user.service import user_service
 
 # 获取所有用户
 @api.route('/user/all', methods=['GET'])
 def list_user():
-    return jsonify({
-        "status": 200,
-        "data": "liupan"
-    })
+    return user_service.list_user()
