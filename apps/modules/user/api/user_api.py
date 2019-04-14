@@ -13,6 +13,7 @@ from apps.modules.user.service import user_service
 # from apps.core.helper.protected import protected
 # from apps.core.helper.rate_limited import rate_limited
 
+
 # 获取所有用户
 @api.route('/user/all', methods=['GET'])
 # @rate_limited(limit=50, minutes=60)  # only 50 requests from user/ip to this endpoint allowed per hour
