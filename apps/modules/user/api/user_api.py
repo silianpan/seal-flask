@@ -6,6 +6,7 @@
 # @File    : user_api.py
 # @Software: PyCharm
 
+from flask import request
 from apps.core.blueprint import api
 from apps.modules.user.service import user_service
 # from apps.core.helper.cache import cached
@@ -19,3 +20,10 @@ from apps.modules.user.service import user_service
 # @cached(minutes=5)  # response cached for 5 minutes
 def list_user():
     return user_service.list_user()
+
+
+@api.route('/module', methods=['POST'])
+def query_modules():
+    if not request.json:
+        return "request parms invalid!", 400
+    return user_service.query_modules(request.json)

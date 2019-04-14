@@ -12,7 +12,6 @@ from apps.configs.sys_config import API_URL_PREFIX
 
 api = Blueprint('api', __name__, url_prefix=API_URL_PREFIX)
 
-
 routing_modules = [
     {
         "from": "apps.modules.user.api",
