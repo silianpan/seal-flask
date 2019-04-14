@@ -6,9 +6,7 @@
 # @File    : tools.py
 # @Software: PyCharm
 
-
-import json
-from datetime import datetime
+from flask import json
 
 
 class CustomEncoder(json.JSONEncoder):
@@ -16,8 +14,6 @@ class CustomEncoder(json.JSONEncoder):
         type C{bson.objectid.ObjectId}, C{datetime.datetime}
     """
     def default(self, obj):
-        if isinstance(obj, datetime):
-            return obj.isoformat()
-        elif isinstance(obj, bytes):
+        if isinstance(obj, bytes):
             return str(obj, encoding='utf-8')
         return json.JSONEncoder.default(self, obj)
