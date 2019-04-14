@@ -6,13 +6,9 @@
 # @File    : user_service.py
 # @Software: PyCharm
 
-from flask import jsonify
+from flask import json
 from apps.modules.user.model.user import User
 
 
 def list_user():
-    users = User.query.all()
-    temp = []
-    for x in users:
-        temp.append(x.to_json())
-    return jsonify(temp)
+    return json.dumps([user.to_dict() for user in User.query.all()])

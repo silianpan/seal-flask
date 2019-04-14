@@ -3,13 +3,14 @@
 # @Time    : 2019-04-13 20:32
 # @Author  : liupan
 # @Site    : 
-# @File    : user.py
+# @File    : user_api.py
 # @Software: PyCharm
 
 from apps.core.db.mysql import db
+from apps.core.model.base_model import BaseModel
 
 
-class User(db.Model):
+class User(BaseModel):
     __tablename__ = 'sys_user'
 
     id = db.Column(db.String(32), primary_key=True)
@@ -33,12 +34,7 @@ class User(db.Model):
     upd_time = db.Column(db.DateTime)
     version = db.Column(db.Integer)
 
+    _default_fields = ["name", "username", "salt", "dept_id", "phone", "mail", "enable"]
+
     def __repr__(self):
         return '<User %r>' % self.username
-
-    def to_json(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'username': self.username
-        }
