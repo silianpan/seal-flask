@@ -34,7 +34,7 @@ class User(BaseModel):
     upd_time = db.Column(db.DateTime)
     version = db.Column(db.Integer)
 
-    _default_fields = ["name", "username", "salt", "dept_id", "phone", "mail", "enable"]
+    _default_fields = ["name", "username", "salt", "dept_id", "phone", "mail", "enable", "lock_status", "photo"]
 
     def __repr__(self):
         return '<User %r>' % self.username
