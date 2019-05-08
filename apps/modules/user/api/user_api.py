@@ -8,7 +8,7 @@
 
 from flask import request, jsonify, json
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
+    jwt_required, create_access_token,
     get_jwt_identity
 )
 from apps.core.blueprint import api
@@ -69,9 +69,3 @@ def get_current_user():
     # 查询权限
     return Rb.ok(user)
 
-
-@api.route('/module', methods=['POST'])
-def query_modules():
-    if not request.json:
-        return "request parms invalid!", 400
-    return user_service.query_modules(request.json)

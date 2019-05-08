@@ -20,21 +20,6 @@ def list_user():
     return page(1, 10, sql)
 
 
-def query_modules(params={}):
-    sql = """
-    SELECT
-        m.* 
-    FROM
-        sys_module m
-        INNER JOIN sys_user u ON u.id = m.crt_user 
-        AND u.del_flag = 0
-        and u.id = :id
-    WHERE
-        m.del_flag = 0
-    """
-    return execute_real_sql(sql)
-
-
 def query_auth_modules(params={}):
     """查询权限模块"""
     sql = """
