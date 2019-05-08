@@ -7,7 +7,7 @@
 # @Software: PyCharm
 
 from apps.modules.user.model.user import User
-from apps.core.db.sql_runner import build_sql, execute_real_sql
+from apps.core.db.sql_runner import build_sql, execute_real_sql, page_query
 
 
 # 更加用户名和密码查询用户
@@ -16,11 +16,11 @@ def query_by_username(username):
 
 
 def page_user(params={}):
-    result = []
-    for r in User.query.paginate(1, 10).items:
-        u = r.to_dict()
-        result.append(u)
-    return result
+    """分页查询用户"""
+    sql = '''
+    select * from sys_user
+    '''
+    return page_query(sql, params)
 
 
 def query_auth_modules(params={}):

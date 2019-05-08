@@ -50,7 +50,7 @@ def login():
 # @protected(limit=2, minutes=720)  # only 2 404 requests from same ip to this endpoint allowed per 12 hours
 # @cached(minutes=5)  # response cached for 5 minutes
 def page_user():
-    return Rb.ok(user_service.page_user(request.json))
+    return Rb.ok(json.loads(user_service.page_user(request.json)))
 
 
 @api.route('/admin/user/front/info', methods=['GET'])

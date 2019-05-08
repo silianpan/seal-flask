@@ -28,6 +28,17 @@ def to_dict_dumps(result):
     return json.dumps([dict(r) for r in result], cls=CustomEncoder)
 
 
+def page_query(sql='', params={}):
+    """分页查询"""
+    page_index = 1
+    page_size = 10
+    if 'current' in params.keys():
+        page_index = int(params['current'])
+    if 'size' in params.keys():
+        page_size = int(params['size'])
+    return page(page_index, page_size, sql, params)
+
+
 def page(page_index=1, page_size=10, sql='', params={}):
     """分页查询"""
     if page_index <= 0:
