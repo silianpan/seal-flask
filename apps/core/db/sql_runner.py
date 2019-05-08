@@ -23,6 +23,11 @@ def execute_real_sql_dict(real_sql):
     return [dict(r) for r in result]
 
 
+def to_dict_dumps(result):
+    """转换为字典"""
+    return json.dumps([dict(r) for r in result], cls=CustomEncoder)
+
+
 def page(page_index=1, page_size=10, sql='', params={}):
     """分页查询"""
     if page_index <= 0:

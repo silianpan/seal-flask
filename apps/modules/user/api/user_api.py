@@ -44,13 +44,13 @@ def login():
 
 
 # 获取所有用户
-@api.route('/user/all', methods=['GET'])
+@api.route('/admin/user/page', methods=['POST'])
 @jwt_required
 # @rate_limited(limit=50, minutes=60)  # only 50 requests from user/ip to this endpoint allowed per hour
 # @protected(limit=2, minutes=720)  # only 2 404 requests from same ip to this endpoint allowed per 12 hours
 # @cached(minutes=5)  # response cached for 5 minutes
-def list_user():
-    return Rb.ok(json.loads(user_service.list_user()))
+def page_user():
+    return Rb.ok(user_service.page_user(request.json))
 
 
 @api.route('/admin/user/front/info', methods=['GET'])
