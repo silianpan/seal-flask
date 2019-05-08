@@ -6,12 +6,8 @@
 # @File    : user_service.py
 # @Software: PyCharm
 
-from flask import json
-from sqlalchemy.sql import text
 from apps.modules.user.model.user import User
-from apps.core.db.mysql import db
-from apps.core.tools import CustomEncoder
-from apps.core.db.sql_runner import build_sql
+from apps.core.db.sql_runner import build_sql, page, execute_real_sql
 
 
 # 更加用户名和密码查询用户
@@ -20,7 +16,8 @@ def query_by_username(username):
 
 
 def list_user():
-    return json.dumps([user.to_dict() for user in User.query.all()])
+    sql = 'select * from sys_user'
+    return page(1, 10, sql)
 
 
 def query_modules(params={}):
@@ -35,8 +32,7 @@ def query_modules(params={}):
     WHERE
         m.del_flag = 0
     """
-    result = db.engine.execute(text(sql), params).fetchall()
-    return json.dumps([dict(r) for r in result], cls=CustomEncoder)
+    return execute_real_sql(sql)
 
 
 def query_auth_modules(params={}):
@@ -71,8 +67,7 @@ def query_auth_modules(params={}):
             m.LEVEL
     """
     real_sql = build_sql(sql, params)
-    result = db.engine.execute(text(real_sql)).fetchall()
-    return json.dumps([dict(r) for r in result], cls=CustomEncoder)
+    return execute_real_sql(real_sql)
 
 
 def query_auth_modules_element(params={}):
@@ -108,5 +103,4 @@ def query_auth_modules_element(params={}):
         e.LEVEL
     """
     real_sql = build_sql(sql, params)
-    result = db.engine.execute(text(real_sql)).fetchall()
-    return json.dumps([dict(r) for r in result], cls=CustomEncoder)
+    return execute_real_sql(real_sql)
