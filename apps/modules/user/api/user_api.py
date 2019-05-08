@@ -6,7 +6,7 @@
 # @File    : user_api.py
 # @Software: PyCharm
 
-from flask import request, jsonify
+from flask import request, jsonify, json
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
     get_jwt_identity
@@ -14,6 +14,7 @@ from flask_jwt_extended import (
 from apps.core.blueprint import api
 from apps.modules.user.service import user_service
 from apps.core.util import match_password
+from apps.core.tools import to_tree
 from apps.core.rb import Rb
 # from apps.core.helper.cache import cached
 # from apps.core.helper.protected import protected
@@ -58,10 +59,15 @@ def get_current_user():
     current_user = get_jwt_identity()
     # 查询用户
     user = user_service.query_by_username(current_user)
+    user = user.to_dict()
     # 查询菜单
-    user_service.query_auth_modules()
+    menus = user_service.query_auth_modules({'user_id': user['id'], 'resource_type': 'menu'})
+    menus_tree = to_tree(json.loads(menus))
+    user['menus'] = menus_tree
+    elements = user_service.query_auth_modules_element({'user_id': user['id'], 'resource_type': 'btn'})
+    user['elements'] = json.loads(elements)
     # 查询权限
-    return Rb.ok(current_user)
+    return Rb.ok(user)
 
 
 @api.route('/module', methods=['POST'])

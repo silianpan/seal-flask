@@ -40,6 +40,7 @@ def query_modules(params={}):
 
 
 def query_auth_modules(params={}):
+    """查询权限模块"""
     sql = """
     SELECT
             m.*
@@ -69,4 +70,43 @@ def query_auth_modules(params={}):
         ORDER BY
             m.LEVEL
     """
-    build_sql(sql, {'resource_type': 1, 'user_id': 1})
+    real_sql = build_sql(sql, params)
+    result = db.engine.execute(text(real_sql)).fetchall()
+    return json.dumps([dict(r) for r in result], cls=CustomEncoder)
+
+
+def query_auth_modules_element(params={}):
+    """查询权限模块元素"""
+    sql = """
+    SELECT
+        e.*
+    FROM
+        sys_module_element e,
+        sys_resource_authority ra
+    WHERE
+        ra.resource_id = e.id
+      AND ra.del_flag = 0
+      AND e.del_flag = 0
+      AND e.`enable` = 1
+      { AND ra.resource_type = :resource_type }
+      AND EXISTS (
+            SELECT
+                rr.id
+            FROM
+                sys_re_role_user rr,
+                sys_user u
+            WHERE
+                rr.del_flag = 0
+              AND u.del_flag = 0
+              and u.`enable` = 1
+              AND rr.user_id = u.id
+              and rr.role_id = ra.role_id
+              { AND u.id = :user_id }
+        )
+
+    ORDER BY
+        e.LEVEL
+    """
+    real_sql = build_sql(sql, params)
+    result = db.engine.execute(text(real_sql)).fetchall()
+    return json.dumps([dict(r) for r in result], cls=CustomEncoder)

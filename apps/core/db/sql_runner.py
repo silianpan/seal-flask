@@ -23,7 +23,7 @@ def build_sql(sql='', params={}):
                     field = ':' + key
                     if field in target:
                         is_find = True
-                        target = target.replace(str(field), str(value))
+                        target = target.replace(str(field), "'" + str(value) + "'")
 
             if is_find:
                 target = target.replace('{', '')
