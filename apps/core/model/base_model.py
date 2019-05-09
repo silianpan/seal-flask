@@ -15,6 +15,16 @@ from sqlalchemy.exc import IntegrityError, OperationalError
 class BaseModel(db.Model):
     __abstract__ = True
 
+    id = db.Column(db.String(32), primary_key=True)
+    del_flag = db.Column(db.Boolean)
+    crt_name = db.Column(db.String(255))
+    crt_user = db.Column(db.String(255))
+    upd_name = db.Column(db.String(255))
+    upd_user = db.Column(db.String(255))
+    crt_time = db.Column(db.DateTime)
+    upd_time = db.Column(db.DateTime)
+    version = db.Column(db.Integer)
+
     def __init__(self, **kwargs):
         kwargs["_force"] = True
         self.from_dict(**kwargs)
