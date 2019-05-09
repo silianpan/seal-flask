@@ -38,3 +38,13 @@ def find_module_and_element_by_role_pid():
 def logic_del_resource_authority():
     """逻辑删除资源权限"""
     return Rb.ok(module_service.logic_del_resource_authority(request.args.get('id')))
+
+
+@api.route('/admin/module/sign/authority', methods=['POST'])
+@jwt_required
+def sign_authority():
+    """赋予角色权限"""
+    ret = module_service.sign_authority(request.json)
+    if not ret:
+        return Rb.failed('权限已经存在')
+    return Rb.ok(ret)

@@ -6,6 +6,7 @@
 # @File    : dict_service.py
 # @Software: PyCharm
 
+from flask import json
 from apps.core.db.sql_runner import build_sql, execute_real_sql
 from apps.modules.module.model.resource_authority import ResourceAuthority
 from apps.core.db.mysql import db
@@ -82,5 +83,26 @@ def logic_del_resource_authority(id):
     """逻辑删除资源权限"""
     ra = ResourceAuthority.query.filter_by(id=id).first()
     ra.del_flag = 1
+    db.session.commit()
+    return True
+
+
+def sign_authority(params={}):
+    """赋予角色权限"""
+    sql = '''
+    select count(1) total from sys_resource_authority ra where ra.del_flag = 0
+    { and ra.role_id = :roleId }
+    { and ra.resource_id = :resourceId }
+    { and ra.resource_type = :resourceType }
+    '''
+    real_sql = build_sql(sql, params)
+    ra_count = execute_real_sql(real_sql)
+    ra_count = json.loads(ra_count)
+    if len(ra_count) > 0:
+        total = ra_count[0]['total']
+        if int(total) > 0:
+            return False
+    ra = ResourceAuthority(role_id=params['roleId'], resource_id=params['resourceId'], resource_type=params['resourceType'], del_flag=0)
+    db.session.add(ra)
     db.session.commit()
     return True

@@ -6,16 +6,21 @@
 # @File    : base_model.py
 # @Software: PyCharm
 
+import uuid
 from flask import json
 from sqlalchemy.orm.attributes import QueryableAttribute
 from apps.core.db.mysql import db
 from sqlalchemy.exc import IntegrityError, OperationalError
 
 
+def gen_id():
+    return uuid.uuid4().hex
+
+
 class BaseModel(db.Model):
     __abstract__ = True
 
-    id = db.Column(db.String(32), primary_key=True)
+    id = db.Column(db.String(32), default=gen_id, primary_key=True)
     del_flag = db.Column(db.Boolean)
     crt_name = db.Column(db.String(255))
     crt_user = db.Column(db.String(255))
