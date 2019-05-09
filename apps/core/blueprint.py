@@ -22,8 +22,8 @@ routing_modules = [
         "import": ["dict_api"]
     },
     {
-        "from": "apps.modules.modules.api",
-        "import": ["modules_api"]
+        "from": "apps.modules.module.api",
+        "import": ["module_api"]
     },
     {
         "from": "apps.modules.role.api",
