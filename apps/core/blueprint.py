@@ -24,6 +24,10 @@ routing_modules = [
     {
         "from": "apps.modules.modules.api",
         "import": ["modules_api"]
+    },
+    {
+        "from": "apps.modules.role.api",
+        "import": ["role_api"]
     }
 ]
 
