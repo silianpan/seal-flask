@@ -31,3 +31,10 @@ def find_module_and_element_by_role_pid():
     modules.extend(elements)
     print(modules)
     return Rb.ok(modules)
+
+
+@api.route('/admin/resourceAuthority/logic/delete', methods=['DELETE'])
+@jwt_required
+def logic_del_resource_authority():
+    """逻辑删除资源权限"""
+    return Rb.ok(module_service.logic_del_resource_authority(request.args.get('id')))

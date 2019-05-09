@@ -20,7 +20,7 @@ class DictItem(BaseModel):
     description = db.Column(db.String(128))
     config = db.Column(db.String(128))
 
-    _default_fields = ["id", "dict_value", "dict_key", "enable", "group_code", "description"]
+    _default_fields = ["id", "del_flag", "crt_time", "dict_value", "dict_key", "enable", "group_code", "description"]
 
     def __repr__(self):
         return '<DictItem %r>' % self.dict_value

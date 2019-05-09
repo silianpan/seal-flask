@@ -25,7 +25,7 @@ class User(BaseModel):
     lock_status = db.Column(db.Boolean)
     photo = db.Column(db.Text)
 
-    _default_fields = ["name", "username", "salt", "dept_id", "phone", "mail", "enable", "lock_status", "photo"]
+    _default_fields = ["id", "del_flag", "crt_time", "name", "username", "salt", "dept_id", "phone", "mail", "enable", "lock_status", "photo"]
 
     def __repr__(self):
         return '<User %r>' % self.username

@@ -7,6 +7,8 @@
 # @Software: PyCharm
 
 from apps.core.db.sql_runner import build_sql, execute_real_sql
+from apps.modules.module.model.resource_authority import ResourceAuthority
+from apps.core.db.mysql import db
 
 
 def find_module_by_pid(pid):
@@ -74,3 +76,11 @@ def find_element_by_role_module(role_id, module_id):
     '''
     real_sql = build_sql(sql, params)
     return execute_real_sql(real_sql)
+
+
+def logic_del_resource_authority(id):
+    """逻辑删除资源权限"""
+    ra = ResourceAuthority.query.filter_by(id=id).first()
+    ra.del_flag = 1
+    db.session.commit()
+    return True

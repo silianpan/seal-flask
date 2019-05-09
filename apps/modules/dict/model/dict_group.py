@@ -18,7 +18,7 @@ class DictGroup(BaseModel):
     description = db.Column(db.String(1024))
     enable = db.Column(db.Boolean)
 
-    _default_fields = ["id", "name", "code", "enable", "description"]
+    _default_fields = ["id", "del_flag", "crt_time", "name", "code", "enable", "description"]
 
     def __repr__(self):
         return '<DictGroup %r>' % self.name

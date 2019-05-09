@@ -20,7 +20,7 @@ class Role(BaseModel):
     desc = db.Column(db.String(255))
     enable = db.Column(db.Boolean)
 
-    _default_fields = ["id", "name", "level", "pid", "desc", "enable"]
+    _default_fields = ["id", "del_flag", "crt_time", "name", "level", "pid", "desc", "enable"]
 
     def __repr__(self):
         return '<Role %r>' % self.name

@@ -26,7 +26,7 @@ class Module(BaseModel):
     level = db.Column(db.Integer)
     enable = db.Column(db.Boolean)
 
-    _default_fields = ["id", "name", "desc", "code", "type", "pid", "path", "route", "icon_cls", "level", "enable"]
+    _default_fields = ["id", "del_flag", "crt_time", "name", "desc", "code", "type", "pid", "path", "route", "icon_cls", "level", "enable"]
 
     def __repr__(self):
         return '<Module %r>' % self.name
