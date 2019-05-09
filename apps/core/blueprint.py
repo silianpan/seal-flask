@@ -20,6 +20,10 @@ routing_modules = [
     {
         "from": "apps.modules.dict.api",
         "import": ["dict_api"]
+    },
+    {
+        "from": "apps.modules.modules.api",
+        "import": ["modules_api"]
     }
 ]
 
