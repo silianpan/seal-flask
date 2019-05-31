@@ -32,7 +32,8 @@ db_config.py*
 
 # cache
 /*cache/
-*.ini
+*.pid
+#*.ini
 .idea
 .git
 
